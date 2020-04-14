@@ -1,0 +1,30 @@
+﻿@model List<CustomComputersGU.Models.Poco.Product>
+
+@{
+    ViewBag.Name = "Custom Computers";
+}
+
+<div class="main-banner">
+    <div class="overlay"></div>
+    <div class="main-title">Custom Computers</div>
+</div>
+
+
+<h3 class="left-align-h3">Top Selling Products</h3>
+<div class="cards-container">
+    @foreach (var product in Model)
+    {
+
+            <a href="/Store/Details/@product.ProductId" class="card1">
+                <div class="card__image-container">
+                    <img class="card__image" src="@product.ArtUrl">
+                </div>
+
+                <div class="card__text">
+                    <p class="card__text__name">@product.Name</p>
+                    <p class="card__text__price">£@product.Price</p>
+                </div>
+            </a>
+
+            }
+</div>

@@ -1,0 +1,33 @@
+﻿@model CustomComputersGU.Models.Poco.Order
+
+@{
+    ViewBag.Title = "Address And Payment";
+}
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")"
+        type="text/javascript"></script>
+
+
+@using (Html.BeginForm())
+{   
+    <fieldset>
+        <legend>Shipping Information</legend>
+        @* Displays a text box for the worker to enter the customer email so that the order will be in the customers order list *@
+        @if (User.IsInRole("Administrator") || User.IsInRole("StoresManager") || User.IsInRole("StoreManager") || User.IsInRole("AssistantManager") || User.IsInRole("SalesAssistant"))
+        {
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        }
+
+        @Html.EditorForModel()
+
+      
+    </fieldset>
+    <input type="submit" value="Proceed to Payment" class="btn btn-outline-primary" />    
+}

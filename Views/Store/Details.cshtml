@@ -1,0 +1,52 @@
+﻿@model CustomComputersGU.Models.Poco.Product
+
+@{
+    ViewBag.Title = "Product - " + Model.Name;
+}
+<div class="background-banner">
+    <div class="background-banner__container">
+        <div class="overlay"></div>
+        <div class="breadcrumb-container">
+            <a href="/" class="breadcrumb-text breadcrumb-color">Home</a>
+            <div class="breadcrumb-text arrow">→</div>
+            <a href="/Store" class="breadcrumb-text breadcrumb-color">Categories</a>
+            <div class="breadcrumb-text arrow">→</div>
+            <a href="/Store/Browse?category=@Model.Category.Name" class="breadcrumb-text breadcrumb-color">@Model.Category.Name</a>
+            <div class="breadcrumb-text arrow">→</div>
+            <a href="#" class="breadcrumb-text">@Model.Name</a>
+        </div>
+        <div class="title"></div>
+    </div>
+</div>
+
+<div class="product-page-card">
+    <div class="product-page-card__container">
+        <div class="product-page-card__image-container">
+            <img class="product-page-card__image" src="@Model.ArtUrl">
+        </div>
+
+        <div class="product-page-card__details-container">
+            <div class="details-container__text">
+                <h2>@Model.Name</h2>
+                <p>@Model.Description</p>
+            </div>
+
+            <div class="details-container__buy">
+                <p class="details-container__buy__price">£@String.Format("{0:F}", Model.Price)</p>
+
+                @if (Model.UnitsInStock <= 0)
+                {
+                    <p> Out of stock </p>
+                }
+                else
+                {
+                    <p class="details-container__buy__stock">In stock: @Model.UnitsInStock</p>
+                    <p>
+                        @Html.ActionLink("Add to cart", "AddToCart", "ShoppingCart", new { id = Model.ProductId }, new { @class = "btn btn-outline-primary" })
+                    </p>
+                }           
+            </div>
+        </div>
+    </div>
+</div>
+

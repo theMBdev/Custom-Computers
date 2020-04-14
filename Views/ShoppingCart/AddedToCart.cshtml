@@ -1,0 +1,17 @@
+﻿<link href="~/Content/Site.css" rel="stylesheet" />
+
+@{   
+    ViewBag.Title = "AddedToCart";
+}
+
+<div>
+    <h2>Product Added To Cart</h2>
+</div>
+
+<center>
+    @Html.ActionLink("Checkout", "Index", "ShoppingCart", new { area = "" }, new { @class = "btn btn-outline-primary" })
+    @Html.ActionLink("Continue Shopping", "Index", "Store", new { area = "" }, new { @class = "btn btn-outline-primary" })
+</center>
+
+
+

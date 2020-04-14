@@ -1,0 +1,71 @@
+﻿@model CustomComputersGU.Models.Poco.Category
+
+@{
+    ViewBag.Title = "Browse Products";
+}
+
+<div class="background-banner">
+    <div class="background-banner__container">
+        <div class="breadcrumb-container">
+            <a href="/" class="breadcrumb-text breadcrumb-color">Home</a>
+            <div class="breadcrumb-text arrow">→</div>
+            <a href="/Store" class="breadcrumb-text breadcrumb-color">Categories</a>
+            <div class="breadcrumb-text arrow">→</div>
+            <a class="breadcrumb-text">@Model.Name</a>
+        </div>
+        <div class="banner__text">
+            <div class="title">@Model.Name</div>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="what-is-container">
+    <div class="what-is-container1">
+
+        @if (Model.Name == "Processors")
+        {
+            <h2>What is a @Model.Name.Remove(9, 1)?</h2>
+        }
+        else if (Model.Name == "Graphics Cards")
+        {
+            <h2>What is a @Model.Name.Remove(13, 1)?</h2>
+        }
+        else if (Model.Name == "Memory")
+        {
+            <h2>What is @Model.Name?</h2>
+        }
+        else if (Model.Name == "Power Supplies")
+        {
+            <h2>What is a Power Supply?</h2>
+        }
+        else if (Model.Name == "Storage")
+        {
+            <h2>What is a Hard Drive?</h2>
+        }
+
+
+
+        <p>@Model.Description</p>
+    </div>
+</div>
+
+<div class="cards-container">
+
+    @foreach (var product in Model.Products)
+    {
+
+    <a href="@Url.Action("Details", new { id = product.ProductId })" class="card1">
+        <div class="card__image-container">
+            <img class="card__image" src="@product.ArtUrl">
+        </div>
+
+        <div class="card__text">
+            <p class="card__text__name">@product.Name</p>
+            <p class="card__text__price">£@product.Price</p>
+        </div>
+    </a>
+    }
+
+</div>

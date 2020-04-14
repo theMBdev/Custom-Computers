@@ -1,0 +1,29 @@
+﻿@model IEnumerable<CustomComputersGU.Models.Poco.Category>
+
+@{
+    ViewBag.Title = "Store";
+}
+
+<div class="background-banner">
+    <div class="background-banner__container">
+        <!--                    <div class="overlay"></div>-->
+        <div class="breadcrumb-container">
+            <a href="/" class="breadcrumb-text breadcrumb-color">Home</a>
+            <div class="breadcrumb-text arrow">→</div>
+            <a href="/Store" class="breadcrumb-text">Categories</a>
+        </div>
+        <div class="title">Categories</div>
+    </div>
+</div>
+
+<div class="circles-full-container">
+
+    @foreach (var category in Model)
+    {
+        <a href="Store/Browse?category=@category.Name" class="circles-full-container__container">
+            <div class="circle"><img class="circle__image" src="@category.ArtUrl"></div>
+            <div class="cont__text"><p>@category.Name</p></div>
+        </a>
+    }
+
+</div>

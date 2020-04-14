@@ -1,0 +1,148 @@
+﻿@model IEnumerable<CustomComputersGU.Models.Poco.Order>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Dashboard Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="~/Content/Site.css" rel="stylesheet" />
+
+</head>
+
+<body>    
+
+    <div class="center-on-page-no-flex-wide">
+
+
+        <h1>Dashboard</h1>
+
+        <section class="row text-center placeholders">
+            <div class="col-6 col-sm-3 placeholder">
+                <img src="~/Content/Images/ProductsLogo.png" width="100" height="100" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
+                <h4>@Html.ActionLink("Products", "Index", "StoreManager", new { area = "" }, new { @class = "nav-link" })</h4>
+
+            </div>
+            <div class="col-6 col-sm-3 placeholder">
+                <img src="~/Content/Images/OrdersLogo.png" width="100" height="100" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
+                <h4>@Html.ActionLink("Orders", "Index", "Orders", new { area = "" }, new { @class = "nav-link" })</h4>
+
+            </div>
+            <div class="col-6 col-sm-3 placeholder">
+                <img src="~/Content/Images/OrderDetailsLogo.png" width="100" height="100" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
+                <h4>@Html.ActionLink("Orders Details", "Index", "OrderDetails", new { area = "" }, new { @class = "nav-link" })</h4>
+            </div>
+            <div class="col-6 col-sm-3 placeholder">
+                <img src="~/Content/Images/RolesLogo.png" width="100" height="100" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
+                <h4>@Html.ActionLink("Admin Roles", "Index", "Admin", new { area = "" }, new { @class = "nav-link" })</h4>
+            </div>
+        </section>
+
+        <h2>Orders</h2>
+        @Html.ActionLink("Print", "Print", "Customer")
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Total)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.City)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PostalCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Country)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Phone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Shipped)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OrderId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Total)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OrderDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.City)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PostalCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Country)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Shipped)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Mark as Shipped", "MarkOrderAsShipped", new { id = item.OrderId })
+                        @*@Html.ActionLink("Details", "Details", new { id = item.OrderId })*@
+                        @Html.ActionLink("Delete", "Delete", new { id = item.OrderId })
+                    </td>
+                </tr>
+            }
+        </table>
+
+        </div>
+
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+        <script src="../../dist/js/bootstrap.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+</body>
+</html>

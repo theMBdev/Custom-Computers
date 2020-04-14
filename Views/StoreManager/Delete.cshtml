@@ -1,0 +1,18 @@
+﻿@model CustomComputersGU.Models.Poco.Product
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete Confirmation</h2>
+<p>
+    Are you sure you want to delete the product titled
+    <strong>@Model.Name</strong>?
+</p>
+@using (Html.BeginForm())
+{   
+    <p> @Html.AntiForgeryToken()  
+        <input type="submit" value="Delete" class="btn btn-outline-primary" />
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-outline-primary" })
+    </p>
+}
