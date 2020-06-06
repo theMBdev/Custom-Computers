@@ -371,6 +371,22 @@ tr:hover
 /*This is the background colour of my navbar*/
 .bg-faded {
     background-color: #f7f7f7;
+  
+}
+
+.nav-container {
+    width: 1440px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+}
+
+.nav-container a {
+    color: gray;
+}
+
+.nav-container a:hover {
+    color: rgb(255, 216, 0);
 }
 
 /*This is the colour of my buttons*/

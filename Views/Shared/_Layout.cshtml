@@ -15,45 +15,50 @@
 </head>
 <body>
     <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <div class="nav-container">
+            <div class="nav-container">
 
-        <a class="navbar-brand" href="@Url.Action("Index", "Home")">
-            <img src="~/Content/Images/yellowlogo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-            Custom Computers
-        </a>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-                <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                <li>@Html.ActionLink("Store", "Index", "Store", new { area = "" }, new { @class = "nav-link" })</li>
-
-
-                @if (User.IsInRole("Customer"))
-                {
-                    <li>@Html.ActionLink("My Orders", "MyOrders", "OrderDetails", new { area = "" }, new { @class = "nav-link" })</li>
-                }
-                else if (User.IsInRole("Administrator") || User.IsInRole("StoreManager") || User.IsInRole("AssistantManager") || User.IsInRole("SalesAssistant"))
-                {
-                    <li> @Html.ActionLink("My Sales", "MySales", "OrderDetails", new { area = "" }, new { @class = "nav-link" }) </li>
-                    <li> @Html.ActionLink("Store Panel", "StorePanel", "StoreManager", new { area = "" }, new { @class = "nav-link" }) </li>
-                }
-                else if (User.IsInRole("StoresManager"))
-                {
-                    <li> @Html.ActionLink("Store Panel", "StorePanel", "StoreManager", new { area = "" }, new { @class = "nav-link" }) </li>
-                }
-            </ul>
-        </div>
-        <ul class="nav navbar-nav navbar-right">
-            <li>
-                <a>
-                    @{Html.RenderAction("CartSummary", "ShoppingCart");}
+                <a class="navbar-brand" href="@Url.Action("Index", "Home")">
+                    <img src="~/Content/Images/yellowlogo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                    Custom Computers
                 </a>
-            </li>
-        </ul>
-        @Html.Partial("_LoginPartial")
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Store", "Index", "Store", new { area = "" }, new { @class = "nav-link" })</li>
+
+
+                        @if (User.IsInRole("Customer"))
+                        {
+                            <li>@Html.ActionLink("My Orders", "MyOrders", "OrderDetails", new { area = "" }, new { @class = "nav-link" })</li>
+                        }
+                        else if (User.IsInRole("Administrator") || User.IsInRole("StoreManager") || User.IsInRole("AssistantManager") || User.IsInRole("SalesAssistant"))
+                        {
+                            <li> @Html.ActionLink("My Sales", "MySales", "OrderDetails", new { area = "" }, new { @class = "nav-link" }) </li>
+                            <li> @Html.ActionLink("Store Panel", "StorePanel", "StoreManager", new { area = "" }, new { @class = "nav-link" }) </li>
+                        }
+                        else if (User.IsInRole("StoresManager"))
+                        {
+                            <li> @Html.ActionLink("Store Panel", "StorePanel", "StoreManager", new { area = "" }, new { @class = "nav-link" }) </li>
+                        }
+                    </ul>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a>
+                            @{Html.RenderAction("CartSummary", "ShoppingCart");}
+                        </a>
+                    </li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
     </nav>
+
+
     <div id="container body-content">
         @RenderBody()
     </div>
