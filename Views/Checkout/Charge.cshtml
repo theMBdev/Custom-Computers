@@ -1,94 +1,105 @@
 ﻿@model CustomComputersGU.Models.StripeChargeModel
 
-<h2>Stripe Charge</h2>
 
-<div>
-    <dl class="dl-horizontal">
-        <dt>
-            <label for="txtCardNumber">Card Number *</label>
-        </dt>
 
-        <dd>
-            <input type="text" name="CardNumber" id="txtCardNumber" placeholder="Card Number e.g 1234..." />
-        </dd>
+<div class="center-on-page">
+    
+    <div class="row">
+        <dl class="dl-horizontal">
+            <h2>Stripe Charge</h2>
+            <dt>
+                <label for="txtCardNumber">Card Number *</label>
+            </dt>
 
-        <dt>
-            <label for="txtCvc">Cvc *</label>
-        </dt>
+            <dd>
+                <input type="text" name="CardNumber" id="txtCardNumber" placeholder="Card Number e.g 1234..." />
+            </dd>
 
-        <dd>
-            <input type="text" name="Cvc" id="txtCvc" placeholder="Security Code e.g 987" />
-        </dd>
+            <dt>
+                <label for="txtCvc">Cvc *</label>
+            </dt>
 
-        <dt>
-            <label for="txtExpiryMonth">Expiry Month (MM) *</label>
-        </dt>
+            <dd>
+                <input type="text" name="Cvc" id="txtCvc" placeholder="Security Code e.g 987" />
+            </dd>
 
-        <dd>
-            <input type="text" name="ExpiryMonth" id="txtExpiryMonth" placeholder="01" />
-        </dd>
+            <dt>
+                <label for="txtExpiryMonth">Expiry Month (MM) *</label>
+            </dt>
 
-        <dt>
-            <label for="txtExpiryYear">Expiry Year (YYYY) *</label>
-        </dt>
+            <dd>
+                <input type="text" name="ExpiryMonth" id="txtExpiryMonth" placeholder="01" />
+            </dd>
 
-        <dd>
-            <input type="text" name="ExpiryYear" id="txtExpiryYear" placeholder="2018" />
-        </dd>
-    </dl>
-</div>
-@using (Html.BeginForm("Charge", "Checkout", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "frmCharge" }))
-{
-    @Html.AntiForgeryToken()
-    <dl class="dl-horizontal">
-        @*<dt>
-            @Html.DisplayNameFor(model => model.Amount)
-        </dt>
-        <dd>
-            @Html.TextBoxFor(model => model.Amount, new { id = "txtAmount" })            
-        </dd>*@        
-    </dl>
-    <p>
-        @Html.HiddenFor(model => model.Token, new { id = "hdnToken" })  
-        @Html.ActionLink("Process Payment", "Charge", null, new { id = "btnCharge", @class = "btn btn-outline-primary" })    
-        
-    </p>
-}
+            <dt>
+                <label for="txtExpiryYear">Expiry Year (YYYY) *</label>
+            </dt>
 
-@section Scripts {
-    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+            <dd>
+                <input type="text" name="ExpiryYear" id="txtExpiryYear" placeholder="2018" />
+            </dd>
 
-    <script type="text/javascript">
-        $('document').ready(function() {
-            Stripe.setPublishableKey('pk_test_i1aDGjrLKpSqEbrzZCGPK3K7');
 
-            $('#btnCharge').on('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
 
-                Stripe.card.createToken({
-                    number: $('#txtCardNumber').val(),
-                    cvc: $('#txtCvc').val(),
-                    exp_month: $('#txtExpiryMonth').val(),
-                    exp_year: $('#txtExpiryYear').val()
-                }, stripeResponseHandler);
-            });
+            @using (Html.BeginForm("Charge", "Checkout", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "frmCharge" }))
+            {
+                @Html.AntiForgeryToken()
+                <dl class="dl-horizontal">
+                    @*<dt>
+                        @Html.DisplayNameFor(model => model.Amount)
+                    </dt>
+                    <dd>
+                        @Html.TextBoxFor(model => model.Amount, new { id = "txtAmount" })
+                    </dd>*@
+                    <p>
+                        @Html.HiddenFor(model => model.Token, new { id = "hdnToken" })
+                        @Html.ActionLink("Process Payment", "Charge", null, new { id = "btnCharge", @class = "btn btn-outline-primary" })
 
-            function stripeResponseHandler(status, response) {
-                var $form = $('#frmCharge');
+                    </p>
+                </dl>
 
-                if (response.error) {
-                    // Show the errors on the form
-                    alert(response.error.message);
-                } else {
-                    // response contains id and card, which contains additional card details
-                    var token = response.id;
-                    // Insert the token into the form so it gets submitted to the server
-                    $('#hdnToken').val(token);
-                    // and submit
-                    $form.get(0).submit();
-                }
             }
-        });
-    </script>
-}
+        </dl>
+
+    </div>
+</div>
+
+
+
+        @section Scripts {
+            <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+
+            <script type="text/javascript">
+                $('document').ready(function () {
+                    Stripe.setPublishableKey('pk_test_i1aDGjrLKpSqEbrzZCGPK3K7');
+
+                    $('#btnCharge').on('click', function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        Stripe.card.createToken({
+                            number: $('#txtCardNumber').val(),
+                            cvc: $('#txtCvc').val(),
+                            exp_month: $('#txtExpiryMonth').val(),
+                            exp_year: $('#txtExpiryYear').val()
+                        }, stripeResponseHandler);
+                    });
+
+                    function stripeResponseHandler(status, response) {
+                        var $form = $('#frmCharge');
+
+                        if (response.error) {
+                            // Show the errors on the form
+                            alert(response.error.message);
+                        } else {
+                            // response contains id and card, which contains additional card details
+                            var token = response.id;
+                            // Insert the token into the form so it gets submitted to the server
+                            $('#hdnToken').val(token);
+                            // and submit
+                            $form.get(0).submit();
+                        }
+                    }
+                });
+            </script>
+        }

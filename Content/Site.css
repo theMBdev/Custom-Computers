@@ -619,6 +619,8 @@ a p {
 
 .card__text__name {
     font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 5px;
 }
 
 .card__text__price {
