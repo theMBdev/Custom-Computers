@@ -255,6 +255,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\dashboard.css" />
+    <Content Include="Content\Images\bannerimage.png" />
     <Content Include="Content\Images\CategoriesLogo.png" />
     <Content Include="Content\Images\cpu.png" />
     <Content Include="Content\Images\gpu.png" />
@@ -281,6 +282,7 @@
     <Content Include="Content\Images\ram4.jpg" />
     <Content Include="Content\Images\ReturnLogo.png" />
     <Content Include="Content\Images\RolesLogo.png" />
+    <Content Include="Content\Images\social.png" />
     <Content Include="Content\Images\tilelayer.png" />
     <Content Include="Content\Images\yellowlogo.png" />
     <Content Include="Content\PagedList.css" />

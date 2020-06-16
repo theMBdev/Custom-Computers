@@ -4,16 +4,30 @@
     ViewBag.Name = "Custom Computers";
 }
 
-<div class="main-banner">
-    <div class="overlay"></div>
-    <div class="main-title">Custom Computers</div>
-</div>
+<section class="hero">
+    <div class="hero__left">
+        <h1>
+            Welcome to
+            Custom Computers
+        </h1>
+        <p class="hero__left__text">
+            The number one place to get the latest
+            computer parts delivered straight to
+            your door
+        </p>
+    </div>
+    <div class="hero__right">
+        <img class="hero__right__image" src="~/Content/Images/bannerimage.png" alt="">
+    </div>
+</section>
 
 
-<h3 class="left-align-h3">Top Selling Products</h3>
-<div class="cards-container">
-    @foreach (var product in Model)
-    {
+<div class="home-title">
+    <h3>Top Selling Products</h3>
+    </div>
+    <div class="cards-container">
+        @foreach (var product in Model)
+        {
 
             <a href="/Store/Details/@product.ProductId" class="card1">
                 <div class="card__image-container">
@@ -26,5 +40,44 @@
                 </div>
             </a>
 
-            }
-</div>
+        }
+    </div>
+
+    <div class="home-section-container">
+
+        <div class="home-section-container__title"><h3>The Custom Computer Way</h3></div>
+
+        <div class="home-section-container__items">
+            <div class="home-section-container__grid">
+                <div class="grid-item-1">
+                    <div class="grid-item__text">
+                        <h4>Easy Returns</h4>
+                        <p>
+                            If you wish to return a product you can easily
+                            print off a return from
+                        </p>
+                    </div>
+                </div>
+                <div class="grid-item-2">
+                    <div class="grid-item__text">
+                        <h4>Order Tracking</h4>
+                        <p>
+                            We let you know when your order has been
+                            shipped so you can be prepared
+                        </p>
+                    </div>
+                </div>
+                <div class="grid-item-3">
+                    <div class="grid-item__flex">
+                        <div class="grid-item__flex__text"><h4>Secure payments provided by Stripe</h4></div>
+
+                        <div class="grid-item__container">
+                            <img class="grid-item__image" src="~/Content/Images/social.png">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
